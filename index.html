@@ -89,6 +89,74 @@ body {
   background: rgba(0,200,83,0.08);
 }
 
+/* ===== MOBILE MENU ===== */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(18,18,31,0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(255,255,255,0.06);
+  flex-direction: column;
+  z-index: 990;
+  animation: slideDown 0.3s ease;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.mobile-menu a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.2s;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active-nav {
+  color: var(--green);
+  background: rgba(0,200,83,0.08);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .nav-logo {
+    font-size: 1.4rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
 /* ===== PAGES ===== */
 .page { display: none; padding-top: 68px; min-height: 100vh; }
 .page.active { display: block; animation: fadeUp 0.45s ease both; }
@@ -179,6 +247,45 @@ body {
   flex-wrap: wrap;
 }
 
+@media (max-width: 768px) {
+  .hero-buttons {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 11px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 1.5rem 1rem;
+    min-height: calc(100vh - 60px);
+  }
+
+  .hero-emoji {
+    font-size: 3rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+}
+
 /* ===== BUTTONS ===== */
 /* learned about gradients from a yt video!! */
 .btn {
@@ -194,6 +301,16 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px;
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 11px 20px;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
 }
 
 .btn-football {
@@ -206,6 +323,12 @@ body {
   box-shadow: 0 12px 32px rgba(0,200,83,0.45);
 }
 
+@media (max-width: 768px) {
+  .btn-football:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
 .btn-f1 {
   background: linear-gradient(135deg, var(--red), #ff6090);
   color: #fff;
@@ -214,6 +337,12 @@ body {
 .btn-f1:hover {
   transform: translateY(-3px) scale(1.04);
   box-shadow: 0 12px 32px rgba(255,23,68,0.45);
+}
+
+@media (max-width: 768px) {
+  .btn-f1:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
 }
 
 .btn-outline {
@@ -235,11 +364,35 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 1rem;
+  }
+}
+
 .section-title {
   font-family: "Fredoka One", cursive;
   font-size: 2.2rem;
   margin-bottom: 0.4rem;
   color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.4rem;
+  }
 }
 
 .section-title .highlight { color: var(--green); }
@@ -248,6 +401,12 @@ body {
   color: var(--muted);
   font-size: 0.92rem;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 480px) {
+  .section-sub {
+    font-size: 0.85rem;
+  }
 }
 
 .cards-row {
@@ -271,10 +430,23 @@ body {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+@media (max-width: 480px) {
+  .big-sport-card {
+    padding: 1.4rem;
+    border-radius: 16px;
+  }
+}
+
 .big-sport-card:hover {
   transform: translateY(-8px) scale(1.02);
   border-color: rgba(255,255,255,0.18);
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 768px) {
+  .big-sport-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
 }
 
 .big-sport-card .card-glow {
@@ -286,6 +458,14 @@ body {
   opacity: 0.2;
   transition: opacity 0.3s;
 }
+
+@media (max-width: 480px) {
+  .big-sport-card .card-glow {
+    width: 150px;
+    height: 150px;
+  }
+}
+
 .big-sport-card:hover .card-glow { opacity: 0.4; }
 
 .football-card .card-glow { background: var(--green); }
@@ -297,6 +477,14 @@ body {
   display: block;
   transition: transform 0.3s ease;
 }
+
+@media (max-width: 480px) {
+  .card-sport-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.6rem;
+  }
+}
+
 .big-sport-card:hover .card-sport-icon { transform: scale(1.15) rotate(8deg); }
 
 .card-sport-name {
@@ -304,6 +492,14 @@ body {
   font-size: 2rem;
   margin-bottom: 0.6rem;
 }
+
+@media (max-width: 480px) {
+  .card-sport-name {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
 .football-card .card-sport-name { color: var(--green); }
 .f1-card2 .card-sport-name { color: var(--red); }
 
@@ -312,6 +508,14 @@ body {
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 1.4rem;
+}
+
+@media (max-width: 480px) {
+  .card-sport-desc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
 }
 
 .card-tags-row {
@@ -389,8 +593,16 @@ body {
   margin: 3rem 0;
 }
 
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (max-width: 768px) {
-  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
 
 .stat-box {
@@ -401,10 +613,25 @@ body {
   border: 1.5px solid rgba(255,255,255,0.06);
   transition: all 0.25s;
 }
+
+@media (max-width: 480px) {
+  .stat-box {
+    padding: 1.2rem 0.8rem;
+    border-radius: 12px;
+  }
+}
+
 .stat-box:hover {
   border-color: rgba(255,255,255,0.15);
   transform: translateY(-4px);
 }
+
+@media (max-width: 768px) {
+  .stat-box:hover {
+    transform: translateY(-2px);
+  }
+}
+
 .stat-box .s-num {
   font-family: "Fredoka One", cursive;
   font-size: 2.4rem;
@@ -414,6 +641,13 @@ body {
   background-clip: text;
   display: block;
 }
+
+@media (max-width: 480px) {
+  .stat-box .s-num {
+    font-size: 1.6rem;
+  }
+}
+
 .stat-box .s-label {
   color: var(--muted);
   font-size: 0.78rem;
@@ -421,6 +655,13 @@ body {
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+@media (max-width: 480px) {
+  .stat-box .s-label {
+    font-size: 0.7rem;
+    letter-spacing: 0px;
+  }
 }
 
 /* ===== SPORT PAGE HERO ===== */
@@ -498,6 +739,14 @@ body {
   border-bottom: 2px solid rgba(255,255,255,0.06);
   scrollbar-width: none;
 }
+
+@media (max-width: 768px) {
+  .sec-nav {
+    top: 60px;
+    padding: 0 12px;
+  }
+}
+
 .sec-nav::-webkit-scrollbar { display: none; }
 
 .sec-tab {
@@ -516,6 +765,14 @@ body {
   border-right: none;
   border-top: none;
 }
+
+@media (max-width: 480px) {
+  .sec-tab {
+    padding: 12px 12px;
+    font-size: 0.75rem;
+  }
+}
+
 .sec-tab:hover { color: var(--text); }
 .sec-tab.on { color: var(--green); border-bottom-color: var(--green); }
 
@@ -527,6 +784,20 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .c-section {
+    padding: 2.5rem 1.5rem;
+    scroll-margin-top: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .c-section {
+    padding: 1.8rem 1rem;
+    scroll-margin-top: 110px;
+  }
+}
+
 .alt-section {
   background: rgba(255,255,255,0.02);
   border-top: 1px solid rgba(255,255,255,0.05);
@@ -534,6 +805,21 @@ body {
   padding: 3.5rem 2rem;
   scroll-margin-top: 130px;
 }
+
+@media (max-width: 768px) {
+  .alt-section {
+    padding: 2.5rem 1.5rem;
+    scroll-margin-top: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .alt-section {
+    padding: 1.8rem 1rem;
+    scroll-margin-top: 110px;
+  }
+}
+
 .alt-section .inner { max-width: 1100px; margin: 0 auto; }
 
 .sec-head {
@@ -542,6 +828,13 @@ body {
   gap: 12px;
   margin-bottom: 0.4rem;
 }
+
+@media (max-width: 480px) {
+  .sec-head {
+    gap: 8px;
+  }
+}
+
 .sec-num {
   background: var(--green);
   color: #000;
@@ -551,14 +844,35 @@ body {
   border-radius: 20px;
   font-weight: 700;
 }
+
+@media (max-width: 480px) {
+  .sec-num {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+  }
+}
+
 .sec-num.red { background: var(--red); color: #fff; }
 .sec-emoji { font-size: 1.3rem; }
+
+@media (max-width: 480px) {
+  .sec-emoji {
+    font-size: 1.1rem;
+  }
+}
 
 .sec-title {
   font-family: "Fredoka One", cursive;
   font-size: 1.9rem;
   color: var(--white);
   margin-bottom: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .sec-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
 }
 
 /* ===== TWO COLUMN TEXT ===== */
@@ -628,7 +942,7 @@ body {
   gap: 16px;
 }
 @media (max-width: 900px) { .rules-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 500px) { .rules-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .rules-grid { grid-template-columns: 1fr; gap: 12px; } }
 
 .rule-box {
   background: var(--card);
@@ -639,6 +953,14 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+@media (max-width: 480px) {
+  .rule-box {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+}
+
 .rule-box::after {
   content: attr(data-num);
   position: absolute;
@@ -653,6 +975,13 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
+
+@media (max-width: 768px) {
+  .rule-box:hover {
+    transform: translateY(-3px);
+  }
+}
+
 .rule-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
 .rule-box h4 {
   font-family: "Fredoka One", cursive;
@@ -660,10 +989,44 @@ body {
   color: var(--white);
   margin-bottom: 0.5rem;
 }
+
+@media (max-width: 480px) {
+  .rule-box h4 {
+    font-size: 0.9rem;
+  }
+}
+
 .rule-box p { color: var(--muted); font-size: 0.85rem; line-height: 1.65; }
 
+@media (max-width: 480px) {
+  .rule-box p {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+}
+
 /* ===== COMPETITION TABLE ===== */
-.comp-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+.comp-table { 
+  width: 100%; 
+  border-collapse: separate; 
+  border-spacing: 0 8px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .comp-table {
+    font-size: 0.85rem;
+    border-spacing: 0 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comp-table {
+    font-size: 0.75rem;
+    border-spacing: 0 4px;
+  }
+}
+
 .comp-table thead th {
   color: var(--muted);
   font-size: 0.75rem;
@@ -673,24 +1036,55 @@ body {
   padding: 0 16px 8px;
   text-align: left;
 }
+
+@media (max-width: 480px) {
+  .comp-table thead th {
+    font-size: 0.65rem;
+    padding: 0 8px 6px;
+    letter-spacing: 0.5px;
+  }
+}
+
 .comp-table tbody tr {
   background: var(--card);
   border-radius: 12px;
   transition: all 0.2s;
 }
 .comp-table tbody tr:hover { background: var(--card2); transform: scale(1.01); }
+
+@media (max-width: 768px) {
+  .comp-table tbody tr:hover {
+    transform: scale(1);
+  }
+}
+
 .comp-table td {
   padding: 14px 16px;
   font-size: 0.88rem;
   color: var(--muted);
 }
+
+@media (max-width: 480px) {
+  .comp-table td {
+    padding: 10px 8px;
+  }
+}
+
 .comp-table td:first-child {
   border-radius: 12px 0 0 12px;
   color: var(--white);
   font-weight: 700;
   font-size: 0.95rem;
 }
+
+@media (max-width: 480px) {
+  .comp-table td:first-child {
+    font-size: 0.8rem;
+  }
+}
+
 .comp-table td:last-child { border-radius: 0 12px 12px 0; }
+
 .comp-badge-inline {
   display: inline-block;
   background: rgba(0,200,83,0.12);
@@ -701,6 +1095,14 @@ body {
   font-weight: 700;
   padding: 2px 10px;
 }
+
+@media (max-width: 480px) {
+  .comp-badge-inline {
+    font-size: 0.65rem;
+    padding: 1px 6px;
+  }
+}
+
 .comp-badge-inline.red { background: rgba(255,23,68,0.12); color: var(--red); border-color: rgba(255,23,68,0.25); }
 
 /* ===== LEAGUES ===== */
@@ -945,6 +1347,19 @@ body {
   padding: 2.5rem 2rem;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+}
+
 .footer-logo-txt {
   font-family: "Fredoka One", cursive;
   font-size: 1.8rem;
@@ -954,9 +1369,29 @@ body {
   background-clip: text;
   margin-bottom: 0.5rem;
 }
+
+@media (max-width: 480px) {
+  .footer-logo-txt {
+    font-size: 1.4rem;
+  }
+}
+
 .footer p { color: var(--muted); font-size: 0.82rem; margin-bottom: 0.3rem; }
+
+@media (max-width: 480px) {
+  .footer p {
+    font-size: 0.75rem;
+  }
+}
+
 /* made by me disclaimer lol */
 .footer .made-by { color: rgba(255,255,255,0.15); font-size: 0.75rem; margin-top: 1rem; }
+
+@media (max-width: 480px) {
+  .footer .made-by {
+    font-size: 0.7rem;
+  }
+}
 
 /* ===== SCROLL REVEAL ===== */
 /* Elements start hidden, JS adds .in to show them */
@@ -1540,18 +1975,31 @@ body {
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="nav-logo" onclick="show('home')">⚡ MotorBall</div>
+  <div class="nav-logo" onclick="show('home'); closeMobileMenu()">⚡ MotorBall</div>
+  <button class="nav-toggle" onclick="toggleMobileMenu()" id="nav-toggle">☰</button>
   <ul class="nav-links">
-    <li><a href="#" onclick="show('home')" data-p="home" class="active-nav">🏠 Home</a></li>
-    <li><a href="#" onclick="show('football')" data-p="football">⚽ Football</a></li>
-    <li><a href="#" onclick="show('f1')" data-p="f1">🏎️ Formula 1</a></li>
-    <li><a href="#" onclick="show('cricket')" data-p="cricket">🏏 Cricket</a></li>
-    <li><a href="#" onclick="show('motogp')" data-p="motogp">🏍️ MotoGP</a></li>
-    <li><a href="#" onclick="show('hockey')" data-p="hockey">🏒 Hockey</a></li>
-    <li><a href="#" onclick="show('basketball')" data-p="basketball">🏀 Basketball</a></li>
-    <li><a href="#" onclick="show('nascar')" data-p="nascar">🏁 NASCAR</a></li>
+    <li><a href="#" onclick="show('home'); closeMobileMenu()" data-p="home" class="active-nav">🏠 Home</a></li>
+    <li><a href="#" onclick="show('football'); closeMobileMenu()" data-p="football">⚽ Football</a></li>
+    <li><a href="#" onclick="show('f1'); closeMobileMenu()" data-p="f1">🏎️ Formula 1</a></li>
+    <li><a href="#" onclick="show('cricket'); closeMobileMenu()" data-p="cricket">🏏 Cricket</a></li>
+    <li><a href="#" onclick="show('motogp'); closeMobileMenu()" data-p="motogp">🏍️ MotoGP</a></li>
+    <li><a href="#" onclick="show('hockey'); closeMobileMenu()" data-p="hockey">🏒 Hockey</a></li>
+    <li><a href="#" onclick="show('basketball'); closeMobileMenu()" data-p="basketball">🏀 Basketball</a></li>
+    <li><a href="#" onclick="show('nascar'); closeMobileMenu()" data-p="nascar">🏁 NASCAR</a></li>
   </ul>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#" onclick="show('home'); closeMobileMenu()" data-p="home" class="active-nav">🏠 Home</a>
+  <a href="#" onclick="show('football'); closeMobileMenu()" data-p="football">⚽ Football</a>
+  <a href="#" onclick="show('f1'); closeMobileMenu()" data-p="f1">🏎️ Formula 1</a>
+  <a href="#" onclick="show('cricket'); closeMobileMenu()" data-p="cricket">🏏 Cricket</a>
+  <a href="#" onclick="show('motogp'); closeMobileMenu()" data-p="motogp">🏍️ MotoGP</a>
+  <a href="#" onclick="show('hockey'); closeMobileMenu()" data-p="hockey">🏒 Hockey</a>
+  <a href="#" onclick="show('basketball'); closeMobileMenu()" data-p="basketball">🏀 Basketball</a>
+  <a href="#" onclick="show('nascar'); closeMobileMenu()" data-p="nascar">🏁 NASCAR</a>
+</div>
 
 <!-- ============================== HOME ============================== -->
 <div id="page-home" class="page active">
@@ -1719,7 +2167,7 @@ body {
   <div class="footer">
     <div class="footer-logo-txt">⚡ MotorBall</div>
     <p>A fun place to learn about sports 🏅</p>
-    <p class="made-by">made with ❤️ and a lot of googling | © 2025</p>
+    <p class="made-by">made with ❤️ and a lot of googling | © 2026</p>
   </div>
 </div>
 
@@ -2194,7 +2642,7 @@ body {
   <div class="footer">
     <button class="back-btn" onclick="show('home')">← Back to Home</button>
     <div class="footer-logo-txt">⚡ MotorBall</div>
-    <p class="made-by">made with ❤️ and a lot of googling | © 2025</p>
+    <p class="made-by">made with ❤️ and a lot of googling | © 2026</p>
   </div>
 </div>
 
@@ -2616,7 +3064,7 @@ body {
   <div class="footer">
     <button class="back-btn" onclick="show('home')">← Back to Home</button>
     <div class="footer-logo-txt">⚡ MotorBall</div>
-    <p class="made-by">made with ❤️ and a lot of googling | © 2025</p>
+    <p class="made-by">made with ❤️ and a lot of googling | © 2026</p>
   </div>
 </div>
 
@@ -2776,7 +3224,7 @@ body {
     </div>
     <p class="text-p" style="margin-top:0.8rem;font-size:0.8rem;color:var(--muted);text-align:center">⌨️ Press <b>Space</b> or tap the button when the ball enters the zone!</p>
   </div>
-  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2025</p></div>
+  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2026</p></div>
 </div>
 
 <!-- ============================== MOTOGP ============================== -->
@@ -2939,7 +3387,7 @@ body {
       </p>
     </div>
   </div>
-  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2025</p></div>
+  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2026</p></div>
 </div>
 
 <!-- ============================== HOCKEY ============================== -->
@@ -3076,7 +3524,7 @@ body {
       <p class="text-p" style="margin-top:0.8rem;font-size:0.8rem;color:var(--muted);text-align:center">🖱️ Move mouse to aim — click/tap to shoot the puck!</p>
     </div>
   </div>
-  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2025</p></div>
+  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2026</p></div>
 </div>
 
 <!-- ============================== BASKETBALL ============================== -->
@@ -3219,7 +3667,7 @@ body {
     </div>
     <p class="text-p" style="margin-top:0.8rem;font-size:0.8rem;color:var(--muted);text-align:center">⌨️ Hold <b>Space</b> to charge, release to shoot &nbsp;|&nbsp; 📱 Hold the button then let go!</p>
   </div>
-  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2025</p></div>
+  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2026</p></div>
 </div>
 
 <!-- ============================== NASCAR ============================== -->
@@ -3367,7 +3815,7 @@ body {
     </div>
   </div>
 
-  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2025</p></div>
+  <div class="footer"><button class="back-btn" onclick="show('home')">← Back to Home</button><div class="footer-logo-txt">⚡ MotorBall</div><p class="made-by">made with ❤️ and a lot of googling | © 2026</p></div>
 </div>
 
 <script>
@@ -3386,8 +3834,8 @@ function show(page) {
   target.classList.add("active");
   window.scrollTo({ top: 0 });
 
-  // update navbar links
-  document.querySelectorAll(".nav-links a").forEach(a => {
+  // update navbar links (desktop and mobile)
+  document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(a => {
     a.classList.toggle("active-nav", a.dataset.p === page);
   });
 
@@ -4840,6 +5288,51 @@ function fbReset() {
     }
   }
 })();
+
+// ===== MOBILE MENU FUNCTIONS =====
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const toggle = document.getElementById('nav-toggle');
+  if (!menu) return;
+  
+  menu.classList.toggle('open');
+  
+  // Update toggle button appearance
+  if (menu.classList.contains('open')) {
+    toggle.textContent = '✕';
+  } else {
+    toggle.textContent = '☰';
+  }
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const toggle = document.getElementById('nav-toggle');
+  if (!menu) return;
+  
+  menu.classList.remove('open');
+  toggle.textContent = '☰';
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+  const menu = document.getElementById('mobile-menu');
+  const toggle = document.getElementById('nav-toggle');
+  const navbar = document.querySelector('.navbar');
+  
+  if (!menu || !toggle || !navbar) return;
+  
+  if (!navbar.contains(event.target) && menu.classList.contains('open')) {
+    closeMobileMenu();
+  }
+});
+
+// Close mobile menu on window resize to desktop
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) {
+    closeMobileMenu();
+  }
+});
 
 </script>
 </body>
